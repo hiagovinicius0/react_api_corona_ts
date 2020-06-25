@@ -2,7 +2,6 @@ import React from 'react'
 
 import {Switch, Route} from 'react-router-dom'
 
-import Dashborad from '../pages/dashboard'
 import Country from '../pages/country'
 import Dashboard from '../pages/dashboard'
 
