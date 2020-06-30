@@ -1,23 +1,10 @@
-import React, {useState, FormEvent, Component} from 'react'
+import React, { FormEvent} from 'react'
 import {AiOutlinePlusCircle} from 'react-icons/ai'
 import api from '../../services/api'
 import {Title, Form, Countries} from './styles'
 import Select from 'react-select';
-import { stat } from 'fs';
+import {Link} from 'react-router-dom'
 
-
-const options = [
-    { value: 'brazil', label: 'Brazil' },
-    { value: 'chile', label: 'Chile' },
-    { value: 'spain', label: 'Espanha' },
-    { value: 'united-states', label: 'Estados Unidos' },
-    { value: 'india', label: 'Índia' },
-    { value: 'iran', label: 'Irã' },
-    { value: 'italy', label: 'Itália' },
-    { value: 'peru', label: 'Peru' },
-    { value: 'united-kingdom', label: 'Reino Unido' },
-    { value: 'russia', label: 'Rússia' },
-];
 const customStyles ={
     option: (provided, state) => ({
         ...provided,
@@ -69,7 +56,7 @@ class Dashboard extends React.Component {
         const response = await api.get(`countries`)
         let listCountries = []
         response.data.map((country) =>{
-            listCountries.push({value: country.Slug, label: country.Country})
+            return listCountries.push({value: country.Slug, label: country.Country})
         })
         this.setState({
             allCountries: listCountries
@@ -88,7 +75,7 @@ class Dashboard extends React.Component {
             select =
                 <><Countries>
                     {countries.map((country) =>(
-                        <a key={country.Active}>
+                        <Link key={country.Active} to={`/country/${selectedOption.value}`}>
                             <h1>{country.Country}</h1>
                             <AiOutlinePlusCircle size={20} />
                             <div>
@@ -109,7 +96,7 @@ class Dashboard extends React.Component {
                                     <p>{country.Deaths.toLocaleString('pt-br')}</p>
                                 </div>
                             </div>
-                        </a>
+                        </Link>
                     ))}
                 </Countries>
             </>

@@ -10,7 +10,7 @@ export default createGlobalStyle `
     box-sizing: border-box;
 }
 body{
-    background: #F0F0F5 url(${coronaBackground}) no-repeat 70% top;
+    background: #F0F0F5 url(${coronaBackground}) no-repeat 80% top;
     -webkit-font-smoothing: antialiased;
 }
 body, input, button{
